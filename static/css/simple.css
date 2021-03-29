@@ -1,0 +1,13 @@
+.file::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.file {
+    position: absolute;
+    width: 70px;
+    background: (255, 255, 255, 0);
+    height: 50px;
+    cursor: hand;
+    left: -25px;
+    display: inline-block;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Object detection in the road</title>
+
+    <!-- load CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="{% static "css/templatemo-style.css" %}">
+    <!-- Templatemo style -->
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <header class="text-center tm-site-header">
+                    <div class="tm-site-logo"></div>
+                    <h1 class="pl-4 tm-site-title">Object detection in the road</h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tm-video-container">
+                    {% if videofile == None %}
+                        <img src="data:image/jpeg;base64, {{img}}"></img>
+                    {% else %}
+                        <video width="1280" controls>
+                            <source src='{{ MEDIA_URL }}{{ videofile }}' type='video/mp4'>
+                        </video>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container tm-container-2">
+        <div class="row">
+            <div class="form__group field text-center col-lg-12">
+                <h2 class="tm-welcome-text">Welcome to Timeless</h2>
+                <form enctype="multipart/form-data" method="POST" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Upload" />
+                </form>
+                <p><a href="http://127.0.0.1:8000/video_streaming">Redirect</a></p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Footer -->
+    <footer class="row mt-5 mb-5">
+        <div class="col-lg-12">
+            <p class="text-center tm-text-gray tm-copyright-text mb-0">
+                <span class="tm-current-year">2021</span>
+            </p>
+        </div>
+    </footer>
+    </div>
+    <!-- .container -->
+
+    <script src="{% static "js/jquery.min.js" %}"></script>
+</body>
+</html>
